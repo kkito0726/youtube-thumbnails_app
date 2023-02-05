@@ -34,24 +34,45 @@ export const Search = () => {
         </div>
         <div className="searchBarRight">vsdd</div>
       </div>
+      <div className="mainContainer">
+        <div className="sidebar">
+          <div className="sidebarWrapper">
+            <ul className="sidebarList">
+              <li className="sidebarListItem">
+                <span className="sidebarListItemText">チャンネルURLで検索</span>
+              </li>
 
-      <div className="mainWrapper">
-        {thumbnails.map((thumbnail, idx) => {
-          return (
-            <div className="videoContainer">
-              <div className="videoContainerWrapper">
-                <div className="videoImg">
-                  <img src={thumbnail} alt="" key={idx} className="img" />
+              <li className="sidebarListItem">
+                <span className="sidebarListItemText">キーワードで検索</span>
+              </li>
+
+              <li className="sidebarListItem">
+                <span className="sidebarListItemText">動画URLで検索</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div className="main">
+          <div className="mainWrapper">
+            {thumbnails.map((thumbnail, idx) => {
+              return (
+                <div className="videoContainer">
+                  <div className="videoContainerWrapper">
+                    <div className="videoImg">
+                      <img src={thumbnail} alt="" key={idx} className="img" />
+                    </div>
+                    <div className="desc">
+                      <span className="videoTitle" key={idx}>
+                        {videoTitles[idx]}
+                      </span>
+                    </div>
+                  </div>
                 </div>
-                <div className="desc">
-                  <span className="videoTitle" key={idx}>
-                    {videoTitles[idx]}
-                  </span>
-                </div>
-              </div>
-            </div>
-          );
-        })}
+              );
+            })}
+          </div>
+        </div>
       </div>
     </div>
   );
