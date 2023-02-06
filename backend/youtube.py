@@ -29,11 +29,15 @@ def get_thumbnails_urls(API_KEY, channel_id, order="date", max_results=50):
   items = data["items"]
   video_titles = [item['snippet']['title'] for item in items]
   thumbnails = [item['snippet']['thumbnails']['high']['url'] for item in items]
+  video_ids = [item['id']['videoId'] for item in items]
+  publishTimes = [item['snippet']['publishTime'] for item in items]
   
   res = {
     "channelTitle": channel_title,
     "videoTitle": video_titles,
-    "thumbnails": thumbnails
+    "videoIds": video_ids,
+    "thumbnails": thumbnails,
+    "publishTimes": publishTimes
   }
   
   return res
