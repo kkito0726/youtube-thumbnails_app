@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { format } from "timeago.js";
 import axios from "axios";
 import "./Search.css";
+import { Sidebar } from "../sidebar/Sidebar";
 
 export const Search = () => {
   const URL = "/channel";
@@ -45,23 +46,7 @@ export const Search = () => {
         </div>
       </div>
       <div className="mainContainer">
-        <div className="sidebar">
-          <div className="sidebarWrapper">
-            <ul className="sidebarList">
-              <li className="sidebarListItem">
-                <span className="sidebarListItemText">チャンネルURLで検索</span>
-              </li>
-
-              <li className="sidebarListItem">
-                <span className="sidebarListItemText">キーワードで検索</span>
-              </li>
-
-              <li className="sidebarListItem">
-                <span className="sidebarListItemText">動画URLで検索</span>
-              </li>
-            </ul>
-          </div>
-        </div>
+        <Sidebar />
 
         <div className="main">
           <div className="mainWrapper">
