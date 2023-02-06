@@ -9,10 +9,17 @@ with open("./API_KEY.txt", "r") as f:
 @app.route('/api/channel')
 def get_thumbnails():
   # クエリパラメータからchannel_idを取得
-  channel_url = request.args.to_dict()["channel_url"]
+  channel_url = request.args.to_dict()["q"]
   channel_id = youtube.find_channel_id(API_KEY, channel_url)
   
   res = youtube.get_thumbnails_urls(API_KEY, channel_id)
+  return jsonify(res)
+
+@app.route('/api/keyword')
+def query_search():
+  query = request.args.to_dict()["q"]
+  res = youtube.get_query_search(API_KEY, query)
+  
   return jsonify(res)
 
 @app.route('/good')

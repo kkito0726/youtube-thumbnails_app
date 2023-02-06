@@ -4,23 +4,22 @@ import axios from "axios";
 import "./Search.css";
 import { Sidebar } from "../sidebar/Sidebar";
 
-export const Search = () => {
-  const URL = "/channel";
+export const Search = (props) => {
+  const URL = props.URL;
   const [query, setQuery] = useState("");
-  const [channelTitle, setChannelTitle] = useState("");
+  const [channelTitle, setChannelTitle] = useState([]);
   const [videoTitles, setVideoTitles] = useState([]);
   const [videoIds, setVideoIds] = useState([]);
   const [thumbnails, setThumbnails] = useState([]);
   const [publishTimes, setPublishTimes] = useState([]);
 
   const handleSearch = async () => {
-    const data = await (await axios(`${URL}?channel_url=${query}`)).data;
+    const data = await (await axios(`${URL}?q=${query}`)).data;
     setChannelTitle(data.channelTitle);
     setThumbnails(data.thumbnails);
     setVideoTitles(data.videoTitle);
     setVideoIds(data.videoIds);
     setPublishTimes(data.publishTimes);
-    console.log(`https://www.youtube.com/watch?v=${data.videoIds[0]}`);
   };
   return (
     <div className="searchContainer">
@@ -33,7 +32,7 @@ export const Search = () => {
             type="text"
             className="searchInput"
             onChange={(e) => setQuery(e.target.value)}
-            placeholder="チャンネルのURLを入力"
+            placeholder={props.placeholder}
           />
           <button className="searchButton" onClick={handleSearch}>
             検索
@@ -55,15 +54,18 @@ export const Search = () => {
                 <a
                   href={`https://www.youtube.com/watch?v=${videoIds[idx]}`}
                   className="videoLink"
+                  key={idx}
                 >
-                  <div className="videoContainer" key={idx}>
+                  <div className="videoContainer">
                     <div className="videoContainerWrapper">
                       <div className="videoImg">
                         <img src={thumbnail} alt="" className="img" />
                       </div>
                       <div className="desc">
                         <span className="videoTitle">{videoTitles[idx]}</span>
-                        <span className="channelTitle">{channelTitle}</span>
+                        <span className="channelTitle">
+                          {channelTitle[idx]}
+                        </span>
                         <span className="publishTime">
                           {format(publishTimes[idx])}
                         </span>
