@@ -49,7 +49,7 @@
 }
 
 .sidebar {
-  flex: 4;
+  flex: 2.5;
   height: 100vh;
 }
 .sidebarWrapper {
@@ -81,6 +81,14 @@
   font-weight: 550;
 }
 
+.main {
+  flex: 9.5;
+}
+
+.videoContainerWrapper:hover {
+  box-shadow: none;
+  transform: translateY(5px);
+}
 .videoContainer {
   padding: 10px;
 }
@@ -89,6 +97,13 @@
   box-shadow: 5px 3px 5px 0px rgba(0, 0, 0, 0.4);
   /* margin-bottom: 10px; */
   display: flex;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+a {
+  text-decoration: none;
+  color: black;
 }
 
 .img {
@@ -99,8 +114,16 @@
 
 .desc {
   padding: 10px;
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+}
+
+.publishTime {
+  font-size: smaller;
 }
 
 .videoTitle {
   font-size: large;
+  font-weight: 550;
 }
