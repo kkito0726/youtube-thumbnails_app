@@ -3,6 +3,7 @@ import { format } from "timeago.js";
 import axios from "axios";
 import "./Search.css";
 import { Sidebar } from "../sidebar/Sidebar";
+import { Link } from "react-router-dom";
 
 export const Search = (props) => {
   const URL = props.URL;
@@ -15,7 +16,7 @@ export const Search = (props) => {
 
   const handleSearch = async () => {
     const data = await (await axios(`${URL}?q=${query}`)).data;
-    setChannelTitle(data.channelTitle);
+    setChannelTitle(data.channelTitles);
     setThumbnails(data.thumbnails);
     setVideoTitles(data.videoTitle);
     setVideoIds(data.videoIds);
@@ -25,7 +26,9 @@ export const Search = (props) => {
     <div className="searchContainer">
       <div className="searchWrapper">
         <div className="searchLeft">
-          <span className="title">YouTube サムネイル</span>
+          <Link to={"/"}>
+            <span className="title">YouTube サムネイル</span>
+          </Link>
         </div>
         <div className="searchBar">
           <input

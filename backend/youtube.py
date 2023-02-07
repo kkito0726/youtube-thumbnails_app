@@ -24,16 +24,16 @@ def get_thumbnails_urls(API_KEY, channel_id, order="date", max_results=50):
   }
   
   data = requests.get("https://www.googleapis.com/youtube/v3/search", params=params).json()
-  channel_title = data['items'][0]['snippet']['channelTitle']
   
   items = data["items"]
+  channel_titles =[item['snippet']['channelTitle'] for item in items]
   video_titles = [item['snippet']['title'] for item in items]
   thumbnails = [item['snippet']['thumbnails']['high']['url'] for item in items]
   video_ids = [item['id']['videoId'] for item in items]
   publishTimes = [item['snippet']['publishTime'] for item in items]
   
   res = {
-    "channelTitle": channel_title,
+    "channelTitles": channel_titles,
     "videoTitle": video_titles,
     "videoIds": video_ids,
     "thumbnails": thumbnails,
@@ -61,7 +61,7 @@ def get_query_search(API_KEY, query, max_results=50):
   publishTimes = [item['snippet']['publishTime'] for item in items]
   
   res = {
-    "channelTitle": channel_titles,
+    "channelTitles": channel_titles,
     "videoTitle": video_titles,
     "videoIds": video_ids,
     "thumbnails": thumbnails,
