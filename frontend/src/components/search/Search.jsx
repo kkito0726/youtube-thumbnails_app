@@ -4,23 +4,17 @@ import axios from "axios";
 import "./Search.css";
 import { Sidebar } from "../sidebar/Sidebar";
 import { Link } from "react-router-dom";
+import { Result } from "../result/Result";
 
 export const Search = (props) => {
   const URL = props.URL;
+  const [data, setData] = useState({});
+
   const [query, setQuery] = useState("");
-  const [channelTitle, setChannelTitle] = useState([]);
-  const [videoTitles, setVideoTitles] = useState([]);
-  const [videoIds, setVideoIds] = useState([]);
-  const [thumbnails, setThumbnails] = useState([]);
-  const [publishTimes, setPublishTimes] = useState([]);
 
   const handleSearch = async () => {
     const data = await (await axios(`${URL}?q=${query}`)).data;
-    setChannelTitle(data.channelTitles);
-    setThumbnails(data.thumbnails);
-    setVideoTitles(data.videoTitle);
-    setVideoIds(data.videoIds);
-    setPublishTimes(data.publishTimes);
+    setData(data);
   };
   return (
     <div className="searchContainer">
@@ -49,37 +43,7 @@ export const Search = (props) => {
       </div>
       <div className="mainContainer">
         <Sidebar />
-
-        <div className="main">
-          <div className="mainWrapper">
-            {thumbnails.map((thumbnail, idx) => {
-              return (
-                <a
-                  href={`https://www.youtube.com/watch?v=${videoIds[idx]}`}
-                  className="videoLink"
-                  key={idx}
-                >
-                  <div className="videoContainer">
-                    <div className="videoContainerWrapper">
-                      <div className="videoImg">
-                        <img src={thumbnail} alt="" className="img" />
-                      </div>
-                      <div className="desc">
-                        <span className="videoTitle">{videoTitles[idx]}</span>
-                        <span className="channelTitle">
-                          {channelTitle[idx]}
-                        </span>
-                        <span className="publishTime">
-                          {format(publishTimes[idx])}
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                </a>
-              );
-            })}
-          </div>
-        </div>
+        <Result data={data} />
       </div>
     </div>
   );
