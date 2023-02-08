@@ -62,7 +62,7 @@ def get_query_search(API_KEY, query, max_results=50):
   
   res = {
     "channelTitles": channel_titles,
-    "videoTitle": video_titles,
+    "videoTitles": video_titles,
     "videoIds": video_ids,
     "thumbnails": thumbnails,
     "publishTimes": publishTimes
