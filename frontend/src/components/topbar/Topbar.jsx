@@ -32,7 +32,8 @@ export const Topbar = (props) => {
       </div>
       <div className="topbarBarRight">
         <div className="topbarIcons">
-          <img src="../../../public/assets/person/noAvatar.png" alt="" />
+          <img src="/assets/person/noAvatar.png" alt="" className="topbarImg" />
+          <span className="userName">LaRCode</span>
         </div>
       </div>
     </div>
