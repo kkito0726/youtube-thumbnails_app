@@ -31,13 +31,15 @@ def get_thumbnails_urls(API_KEY, channel_id, order="date", max_results=50):
   thumbnails = [item['snippet']['thumbnails']['high']['url'] for item in items]
   video_ids = [item['id']['videoId'] for item in items]
   publishTimes = [item['snippet']['publishTime'] for item in items]
+  descriptions = [item['snippet']['description'] for item in items] 
   
   res = {
     "channelTitles": channel_titles,
-    "videoTitle": video_titles,
+    "videoTitles": video_titles,
     "videoIds": video_ids,
     "thumbnails": thumbnails,
-    "publishTimes": publishTimes
+    "publishTimes": publishTimes,
+    "descriptions": descriptions
   }
   
   return res
@@ -59,13 +61,15 @@ def get_query_search(API_KEY, query, max_results=50):
   thumbnails = [item['snippet']['thumbnails']['high']['url'] for item in items]
   video_ids = [item['id']['videoId'] for item in items]
   publishTimes = [item['snippet']['publishTime'] for item in items]
+  descriptions = [item['snippet']['description'] for item in items] 
   
   res = {
     "channelTitles": channel_titles,
     "videoTitles": video_titles,
     "videoIds": video_ids,
     "thumbnails": thumbnails,
-    "publishTimes": publishTimes
+    "publishTimes": publishTimes,
+    "descriptions": descriptions
   }
   
   return res
