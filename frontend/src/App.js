@@ -1,6 +1,6 @@
-import { Home } from "./pages/Home";
+import { Home } from "./pages/home/Home";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import { ChannelHome } from "./pages/ChannelHome";
+import { ChannelHome } from "./pages/channelHome/ChannelHome";
 
 function App() {
   return (

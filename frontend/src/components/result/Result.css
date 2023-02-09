@@ -44,3 +44,11 @@ a {
   font-size: large;
   font-weight: 550;
 }
+
+.resultHr {
+  margin: 5px 0;
+}
+
+.VideoDescription {
+  font-size: 12px;
+}

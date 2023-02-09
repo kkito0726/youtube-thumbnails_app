@@ -26,8 +26,13 @@
   flex: 5;
 }
 
-.topbarInput {
+.topbarIcon {
   margin-left: 10px;
+  color: grey;
+}
+
+.topbarInput {
+  margin-left: 5px;
   border: none;
   width: 80%;
 }

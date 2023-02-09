@@ -1,11 +1,12 @@
+import { Search } from "@mui/icons-material";
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./Topbar.css";
 
 export const Topbar = (props) => {
   const [data, setData] = useState({});
-  props.setData(data);
+  useEffect(() => props.setData(data), [data]);
 
   const [query, setQuery] = useState("");
   const handleSearch = async () => {
@@ -20,6 +21,7 @@ export const Topbar = (props) => {
         </Link>
       </div>
       <div className="topbarBar">
+        <Search className="topbarIcon" />
         <input
           type="text"
           className="topbarInput"

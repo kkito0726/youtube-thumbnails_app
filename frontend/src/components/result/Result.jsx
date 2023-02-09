@@ -31,6 +31,10 @@ export const Result = (props) => {
                       <span className="publishTime">
                         {format(data.publishTimes[idx])}
                       </span>
+                      <hr className="resultHr" />
+                      <span className="VideoDescription">
+                        {data.descriptions[idx]}
+                      </span>
                     </div>
                   </div>
                 </div>
