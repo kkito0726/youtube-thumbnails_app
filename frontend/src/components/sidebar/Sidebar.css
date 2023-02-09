@@ -22,11 +22,22 @@
   transition: all 0.3s;
 }
 
+.sidebarIcon {
+  font-size: 25px !important;
+  margin-right: 10px;
+  margin-left: 5px;
+}
+
 .sidebarListItem:hover {
   box-shadow: none;
   transform: translateY(5px);
+  background-color: rgb(230, 230, 230);
 }
 
 .sidebarListItemText {
   font-weight: 550;
+}
+
+.sidebarHr {
+  margin: 20px 0;
 }
