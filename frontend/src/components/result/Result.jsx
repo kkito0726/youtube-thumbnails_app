@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { format } from "timeago.js";
 import "./Result.css";
 
@@ -35,6 +36,9 @@ export const Result = (props) => {
                       <span className="VideoDescription">
                         {data.descriptions[idx]}
                       </span>
+                      <Link to={`videoInfo/${data.videoIds[idx]}`}>
+                        <span className="videoInfo">詳細はこちら</span>
+                      </Link>
                     </div>
                   </div>
                 </div>

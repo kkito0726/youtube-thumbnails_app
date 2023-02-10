@@ -52,3 +52,13 @@ a {
 .VideoDescription {
   font-size: 12px;
 }
+
+.videoInfo {
+  font-size: smaller;
+  font-weight: 550;
+}
+
+.videoInfo:hover {
+  color: rgb(111, 170, 169);
+  text-decoration: underline;
+}
