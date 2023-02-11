@@ -73,11 +73,38 @@ def get_query_search(API_KEY, query, max_results=50):
   }
   
   return res
+
+def search_video_info(API_KEY, video_id):
+  params = {
+    'key': API_KEY,
+    'part': 'snippet',
+    'id': video_id
+  }
+  
+  data = requests.get("https://www.googleapis.com/youtube/v3/videos", params=params).json()
+  items = data["items"]
+  print(items)
+  channel_titles =[item['snippet']['channelTitle'] for item in items]
+  video_titles = [item['snippet']['title'] for item in items]
+  thumbnails = [item['snippet']['thumbnails']['high']['url'] for item in items]
+  # publishTimes = [item['snippet']['publishTime'] for item in items]
+  descriptions = [item['snippet']['description'] for item in items] 
+  
+  res = {
+    "channelTitles": channel_titles,
+    "videoTitles": video_titles,
+    "thumbnails": thumbnails,
+    # "publishTimes": publishTimes,
+    "descriptions": descriptions
+  }
+  
+  return res
+  
 if __name__ == '__main__':
   with open("./API_KEY.txt", "r") as f:
     API_KEY = f.read()
     
-  res = get_query_search(API_KEY, "ポケモン")
+  res = search_video_info(API_KEY, "638qlfTOXhM")
   
   print(res)
   

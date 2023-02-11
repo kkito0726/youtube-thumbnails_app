@@ -22,10 +22,12 @@ def query_search():
   
   return jsonify(res)
 
-@app.route('/good')
-def good():
-    name = "Good"
-    return name
+@app.route('/api/videoInfo')
+def get_videoInfo():
+  video_id = request.args.to_dict()["q"]
+  res = youtube.search_video_info(API_KEY, video_id);
+  
+  return jsonify(res)
 
 if __name__ == "__main__":
     app.run(debug=True)
