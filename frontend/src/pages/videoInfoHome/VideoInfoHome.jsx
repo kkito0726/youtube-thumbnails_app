@@ -4,8 +4,8 @@ import { Topbar } from "../../components/topbar/Topbar";
 import { VideoInfo } from "../../components/videoInfo/VideoInfo";
 
 export const VideoInfoHome = () => {
-  const URL = "/keyword";
-  const placeholder = "キーワードを入力";
+  const URL = "/videoInfo";
+  const placeholder = "動画IDを入力";
   const [data, setData] = useState({});
   return (
     <div className="home">
@@ -13,7 +13,7 @@ export const VideoInfoHome = () => {
 
       <div className="mainContainer">
         <Sidebar />
-        <VideoInfo />
+        <VideoInfo URL={URL} />
       </div>
     </div>
   );

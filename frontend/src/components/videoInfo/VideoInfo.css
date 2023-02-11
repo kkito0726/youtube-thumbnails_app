@@ -1,3 +1,28 @@
 .main {
   flex: 9;
 }
+
+.videoInfoContainer {
+  padding: 10px;
+}
+
+.videoInfoWrapper {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  box-shadow: 5px 3px 5px 0px rgba(0, 0, 0, 0.4);
+  display: flex;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.thumbnail {
+  flex: 4;
+}
+
+.videoDesc {
+  flex: 8;
+  display: flex;
+  flex-direction: column;
+  padding: 5px 20px;
+}
