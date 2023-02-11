@@ -29,5 +29,12 @@ def get_videoInfo():
   
   return jsonify(res)
 
+@app.route('/api/comment')
+def get_comments():
+  video_id = request.args.to_dict()["q"]
+  res = youtube.get_comments(API_KEY, video_id)
+  
+  return res
+
 if __name__ == "__main__":
     app.run(debug=True)
