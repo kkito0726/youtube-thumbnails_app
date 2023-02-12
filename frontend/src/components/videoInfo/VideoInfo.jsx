@@ -29,18 +29,22 @@ export const VideoInfo = (props) => {
     <div className="main">
       {data.thumbnails ? (
         data.thumbnails.map((thumbnail, idx) => (
-          <div className="videoInfoContainer" key={idx}>
-            <div className="videoInfoWrapper">
-              <div className="thumbnail">
-                <img src={thumbnail} alt="" />
-              </div>
-              <div className="videoDesc">
-                <span className="videoTitle">{data.videoTitles[idx]}</span>
-                <span className="channelTitle">{data.channelTitles[idx]}</span>
-                <span className="description">{data.descriptions[idx]}</span>
+          <a href={`https://www.youtube.com/watch?v=${videoId}`} key={idx}>
+            <div className="videoInfoContainer">
+              <div className="videoInfoWrapper">
+                <div className="thumbnail">
+                  <img src={thumbnail} alt="" />
+                </div>
+                <div className="videoDesc">
+                  <span className="videoTitle">{data.videoTitles[idx]}</span>
+                  <span className="channelTitle">
+                    {data.channelTitles[idx]}
+                  </span>
+                  <span className="description">{data.descriptions[idx]}</span>
+                </div>
               </div>
             </div>
-          </div>
+          </a>
         ))
       ) : (
         <></>
@@ -51,7 +55,7 @@ export const VideoInfo = (props) => {
           <hr className="commentHr" />
           {commentData.comments ? (
             commentData.comments.map((comment, idx) => (
-              <div className="comment">
+              <div className="comment" key={idx}>
                 <div className="commentUser">
                   <span className="authorName">{commentData.authors[idx]}</span>
                   <span className="commentPublishedAt">
