@@ -44,10 +44,20 @@
   font-weight: 550;
 }
 
+.commentUser {
+  display: flex;
+  align-items: center;
+}
+
 .comment {
   padding: 5px 10px;
 }
 
+.profileImg {
+  width: 30px;
+  border-radius: 50%;
+  margin-right: 5px;
+}
 .authorName {
   font-weight: 550;
 }

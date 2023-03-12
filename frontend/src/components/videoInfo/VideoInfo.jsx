@@ -57,6 +57,11 @@ export const VideoInfo = (props) => {
             commentData.comments.map((comment, idx) => (
               <div className="comment" key={idx}>
                 <div className="commentUser">
+                  <img
+                    className="profileImg"
+                    src={commentData.authorProfileImgUrls[idx]}
+                    alt=""
+                  />
                   <span className="authorName">{commentData.authors[idx]}</span>
                   <span className="commentPublishedAt">
                     {format(commentData.publishedAt[idx])}

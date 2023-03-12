@@ -83,7 +83,6 @@ def search_video_info(API_KEY, video_id):
   
   data = requests.get("https://www.googleapis.com/youtube/v3/videos", params=params).json()
   items = data["items"]
-  print(items)
   channel_titles =[item['snippet']['channelTitle'] for item in items]
   video_titles = [item['snippet']['title'] for item in items]
   thumbnails = [item['snippet']['thumbnails']['high']['url'] for item in items]
@@ -116,6 +115,7 @@ def get_comments(API_KEY, video_id):
   comment_list = [item['snippet']['topLevelComment']['snippet'] for item in items]
   
   authors = [item['authorDisplayName'] for item in comment_list]
+  author_profile_image_urls = [item['authorProfileImageUrl'] for item in comment_list]
   published_at = [item['publishedAt'] for item in comment_list]
   comments = [item['textDisplay'] for item in comment_list]
   like_counts = [item['likeCount'] for item in comment_list]
@@ -123,6 +123,7 @@ def get_comments(API_KEY, video_id):
   
   res = {
     "authors": authors,
+    "authorProfileImgUrls": author_profile_image_urls,
     "publishedAt": published_at,
     "comments": comments,
     "likeCounts": like_counts,
@@ -135,7 +136,7 @@ if __name__ == '__main__':
   with open("./API_KEY.txt", "r") as f:
     API_KEY = f.read()
     
-  res = get_comments(API_KEY, "POCFqhJzrEM")
+  res = get_comments(API_KEY, "OhxI7NSqry8")
   
   print(res)
   
